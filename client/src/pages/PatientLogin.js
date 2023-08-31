@@ -25,7 +25,7 @@ const PatientLogin = () => {
         e.preventDefault();
     }
   return (
-    <div class = "mainDiv">
+    <div className = "mainDiv">
       <form 
             onSubmit = { handleSubmit }
       >
