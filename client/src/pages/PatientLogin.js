@@ -60,8 +60,8 @@ const PatientLogin = () => {
         />
 
         <input type="submit" value="Login" />
-       <Link  to="/PatientRegister">
-            <input id ="register" type="submit"  value="Register" />
+       <Link  id ="register"  to="/PatientRegister">
+            <input type="submit"  value="Register" />
        </Link>
 
       </form>

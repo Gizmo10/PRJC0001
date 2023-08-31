@@ -42,3 +42,8 @@ input[type="submit"] {
 input[type="submit"]:hover {
   background-color: grey;
 }
+
+#register {
+  width: 100%;
+  background-color: red;
+}
