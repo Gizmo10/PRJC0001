@@ -7,12 +7,13 @@ const initialState = {
     name: "",
     surname: "",
     identityNumber: "",
+    password: "",
 }
 
 const PatientLogin = () => {
 
     const [state, setState] = useState(initialState);
-    const {name, surname, identityNumber} = state;
+    const {name, surname, identityNumber, password} = state;
 
     const navigate = useNavigate();
 
@@ -56,6 +57,16 @@ const PatientLogin = () => {
         name = "identity"
         placeholder = "Your ID/Passport number..."
         value = {identityNumber || ""}
+        onChange = {handleInputChange}
+        />
+
+      <label htmlFor="password"> Password: </label>
+        <input 
+        type = "text"
+        id = "password"
+        name = "password"
+        placeholder = "Your Password..."
+        value = {password || ""}
         onChange = {handleInputChange}
         />
 
