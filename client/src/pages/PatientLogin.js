@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify"
-import axios from "axios";
+/*import axios from "axios";*/
 import './PatientLogin.css';
+import ErrorBoundary from './ErrorBoundary';
 
 const initialState = {
     name: "",
@@ -16,11 +17,19 @@ const PatientLogin = () => {
     const [state, setState] = useState(initialState);
     const {name, surname, identityNumber, password} = state;
 
-    const name_surname_pattern = /^[A-Z]{1}([a-z]+)$/;
+    const name_pattern = /[A-Z]{1}([a-z]+)$/;
+    /*const surname_pattern = */
     const identity_pattern = /[0-9]{6,13}/; 
 
+    const validateName = (user_name) => {
 
-    const navigate = useNavigate();
+      return  name_pattern.test(user_name);
+    }
+
+    const validateIdentity = (user_id_number) => {
+      
+      return identity_pattern.test(user_id);
+    }
 
     const handleInputChange = (e) => {
         const { name, value} = e.target;
@@ -30,16 +39,8 @@ const PatientLogin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        if(!name || !surname || !identityNumber || !password) {
-          toast.error("One of the fields is missing a value.");
-        } else{
-           if(name_surname_pattern.test(name) && name_surname_pattern.test(surname) && identity_pattern.test(identityNumber)) {
-            toast.success("Regular Expression meets stanadrd")
-
-           } else {
-            toast.error("Doesnt match pattern");
-           }
-        }
+        (!name || !surname || !identityNumber || !password) ?
+          toast.error("One of the fields is missing a value.") : toast.success("correct input");
 
     };
 
@@ -48,6 +49,7 @@ const PatientLogin = () => {
       <form 
             onSubmit = { handleSubmit }
       >
+        <ErrorBoundary fallback="error occured">
         <label htmlFor="name">Name: </label>
         <input
           type="text"
@@ -57,8 +59,10 @@ const PatientLogin = () => {
           value={name || ""}
           onChange={handleInputChange}
         />
+        </ErrorBoundary>
 
-        <label htmlFor="surname">Surname: </label>
+       <ErrorBoundary fallback="error occured">
+       <label htmlFor="surname">Surname: </label>
         <input
         type = "text"
         id = "surname"
@@ -67,32 +71,38 @@ const PatientLogin = () => {
         value = {surname || ""}
         onChange = {handleInputChange}
         />
-
-        <label htmlFor="identity"> Id/Passport: </label>
+       </ErrorBoundary>
+      
+      <ErrorBoundary fallback="error occured">
+      <label htmlFor="identity"> Id/Passport: </label>
         <input 
         type = "text"
         id = "identity"
         name = "identity"
-        placeholder = "Your ID/Passport number..."
+        placeholder = "Your id/passport number..."
         value = {identityNumber || ""}
         onChange = {handleInputChange}
         />
+      </ErrorBoundary>
 
+      <ErrorBoundary fallback="error occured">
       <label htmlFor="password"> Password: </label>
         <input 
         type = "text"
         id = "password"
         name = "password"
-        placeholder = "Your Password..."
+        placeholder = "Your password..."
         value = {password || ""}
         onChange = {handleInputChange}
         />
-
-        <input type="submit" value="Login" />
-       <Link  id ="register"  to="/PatientRegister">
-            <input type="submit"  value="Register" />
+      </ErrorBoundary>
+      
+      <ErrorBoundary fallback="error occured">
+      <input type="submit" id="login" value="Login" />
+       <Link  id ="register" to="/PatientRegister">
+            <input type="submit" value="Register" />
        </Link>
-
+      </ErrorBoundary>
       </form>
     </div>
   );
