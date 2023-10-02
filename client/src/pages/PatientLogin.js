@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify"
 /*import axios from "axios";*/
 import './PatientLogin.css';
@@ -16,6 +16,7 @@ const PatientLogin = () => {
 
     const [state, setState] = useState(initialState);
     const {name, surname, identityNumber, password} = state;
+    const navigate = useNavigate();
 
     const name_pattern = /[A-Z]{1}([a-z]+)$/;
     /*const surname_pattern = */
@@ -28,7 +29,7 @@ const PatientLogin = () => {
 
     const validateIdentity = (user_id_number) => {
       
-      return identity_pattern.test(user_id);
+      return identity_pattern.test(user_id_number);
     }
 
     const handleInputChange = (e) => {
@@ -72,18 +73,6 @@ const PatientLogin = () => {
         onChange = {handleInputChange}
         />
        </ErrorBoundary>
-      
-      <ErrorBoundary fallback="error occured">
-      <label htmlFor="identity"> Id/Passport: </label>
-        <input 
-        type = "text"
-        id = "identity"
-        name = "identity"
-        placeholder = "Your id/passport number..."
-        value = {identityNumber || ""}
-        onChange = {handleInputChange}
-        />
-      </ErrorBoundary>
 
       <ErrorBoundary fallback="error occured">
       <label htmlFor="password"> Password: </label>
@@ -97,11 +86,12 @@ const PatientLogin = () => {
         />
       </ErrorBoundary>
       
+      <ErrorBoundary fallback="error occurred">
+        <input type="submit" value="Login" id="Login"/>
+      </ErrorBoundary>
+
       <ErrorBoundary fallback="error occured">
-      <input type="submit" id="login" value="Login" />
-       <Link  id ="register" to="/PatientRegister">
-            <input type="submit" value="Register" />
-       </Link>
+        <button id="register" onClick={() => navigate("/PatientRegister")}>Register</button>
       </ErrorBoundary>
       </form>
     </div>
