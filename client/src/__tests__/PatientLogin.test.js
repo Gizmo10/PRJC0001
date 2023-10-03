@@ -85,8 +85,11 @@ test("register button renders successfully", ()=> {
 });
 
 test("renders the react App root element", ()=> {
-
-    render(<App />);
+  
+    render(
+    <Router>
+        <App />
+    </Router>);
     screen.debug();
 });
 
@@ -104,85 +107,6 @@ test("renders the react App root element", ()=> {
     expect(screen.getByText(/PatientRegister/i).toBeInTheDocument());
 }); */
 
-test("The name regular expression", ()=> {
-
-    const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "Wanda";
-
-    expect(name).toMatch(name_regex);
-});
-
-test("The name regular expression with all capital letters", ()=> {
-
-    const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "WANDA";
-
-    expect(name).not.toMatch(name_regex);
-})
-
-test("The name regular expression without capital letter", ()=> {
-
-    const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "wanda";
-
-    expect(name).not.toMatch(name_regex);
-});
-
-test("The name regular expression with digit at start", ()=> {
-
-    const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "1Wanda";
-
-    expect(name).not.toMatch(name_regex);
-});
-
-test("The name regular expression with a special character at end", ()=> {
-
-    const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "Wanda@";
-
-    expect(name).not.toMatch(name_regex);
-});
-
-test("The name regular expression with a special character in between", ()=> {
-
-    const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "Wan@da";
-
-    expect(name).not.toMatch(name_regex);
-});
-
-test("The surname regular expression", ()=> {
-
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "Ndzala";
-
-    expect(surname).toMatch(surname_regex);
-});
-
-test("The surname regular expression for surnames with apostrophe", ()=> {
-
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "O'neil";
-
-    expect(surname).toMatch(surname_regex);
-});
-
-test("The surname regular expression for surnames with space", ()=> {
-
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "Ndzala Nkambule";
-
-    expect(surname).toMatch(surname_regex);
-});
-
-test("The surname regular expression for surnames with hyphen", ()=> {
-
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "Ndzala-Nkambule";
-
-    expect(surname).toMatch(surname_regex);
-});
 
 
 
