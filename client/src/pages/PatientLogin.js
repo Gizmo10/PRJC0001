@@ -18,18 +18,12 @@ const PatientLogin = () => {
     const {name, surname, identityNumber, password} = state;
     const navigate = useNavigate();
 
-    const name_pattern = /[A-Z]{1}([a-z]+)$/;
+    const name_pattern = /^[A-Z]{1}[a-z]+$/;
     /*const surname_pattern = */
-    const identity_pattern = /[0-9]{6,13}/; 
 
     const validateName = (user_name) => {
 
       return  name_pattern.test(user_name);
-    }
-
-    const validateIdentity = (user_id_number) => {
-      
-      return identity_pattern.test(user_id_number);
     }
 
     const handleInputChange = (e) => {
