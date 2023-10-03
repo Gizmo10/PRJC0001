@@ -8,22 +8,26 @@ import ErrorBoundary from './ErrorBoundary';
 const initialState = {
     name: "",
     surname: "",
-    identityNumber: "",
     password: "",
 };
 
 const PatientLogin = () => {
 
     const [state, setState] = useState(initialState);
-    const {name, surname, identityNumber, password} = state;
+    const {name, surname, password} = state;
     const navigate = useNavigate();
 
     const name_pattern = /^[A-Z]{1}[a-z]+$/;
-    /*const surname_pattern = */
+    const surname_pattern = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/;
 
     const validateName = (user_name) => {
 
       return  name_pattern.test(user_name);
+    }
+
+    const validateSurname = (user_last_name) => {
+
+      return surname_pattern.test(user_last_name);
     }
 
     const handleInputChange = (e) => {
@@ -34,7 +38,7 @@ const PatientLogin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        (!name || !surname || !identityNumber || !password) ?
+        (!name || !surname || !password) ?
           toast.error("One of the fields is missing a value.") : toast.success("correct input");
 
     };
