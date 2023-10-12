@@ -20,15 +20,22 @@ const PatientLogin = () => {
     const name_pattern = /^[A-Z]{1}[a-z]+$/;
     const surname_pattern = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/;
 
-    const validateName = (user_name) => {
+    const validateName = () => {
 
-      return  name_pattern.test(user_name);
-    }
+      return  name_pattern.test(name);
+    };
 
-    const validateSurname = (user_last_name) => {
+    const validateSurname = () => {
 
-      return surname_pattern.test(user_last_name);
-    }
+      return surname_pattern.test(surname);
+    };
+
+    const validateUserLogin = () {
+
+      if(validateName() && validateSurname()) {
+
+      }
+    };
 
     const handleInputChange = (e) => {
         const { name, value} = e.target;

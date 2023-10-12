@@ -1,7 +1,7 @@
 test("The name regular expression", ()=> {
 
     const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "Wanda";
+    const name = "Sandi";
 
     expect(name).toMatch(name_regex);
 });
@@ -9,7 +9,7 @@ test("The name regular expression", ()=> {
 test("The name regular expression with all capital letters", ()=> {
 
     const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "WANDA";
+    const name = "SANDI";
 
     expect(name).not.toMatch(name_regex);
 })
@@ -17,7 +17,7 @@ test("The name regular expression with all capital letters", ()=> {
 test("The name regular expression without capital letter", ()=> {
 
     const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "wanda";
+    const name = "sandi";
 
     expect(name).not.toMatch(name_regex);
 });
@@ -25,7 +25,7 @@ test("The name regular expression without capital letter", ()=> {
 test("The name regular expression with digit at start", ()=> {
 
     const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "1Wanda";
+    const name = "1Sandi";
 
     expect(name).not.toMatch(name_regex);
 });
@@ -33,7 +33,7 @@ test("The name regular expression with digit at start", ()=> {
 test("The name regular expression with a special character at end", ()=> {
 
     const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "Wanda@";
+    const name = "Sandi@";
 
     expect(name).not.toMatch(name_regex);
 });
@@ -41,7 +41,7 @@ test("The name regular expression with a special character at end", ()=> {
 test("The name regular expression with a special character in between", ()=> {
 
     const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "Wan@da";
+    const name = "San@di";
 
     expect(name).not.toMatch(name_regex);
 });
@@ -49,7 +49,7 @@ test("The name regular expression with a special character in between", ()=> {
 test("The surname regular expression", ()=> {
 
     const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "Ndzala";
+    const surname = "Zulu";
 
     expect(surname).toMatch(surname_regex);
 });
@@ -65,7 +65,7 @@ test("The surname regular expression for surnames with apostrophe", ()=> {
 test("The surname regular expression for surnames with space", ()=> {
 
     const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "Ndzala Nkambule";
+    const surname = "Zulu Nkambule";
 
     expect(surname).toMatch(surname_regex);
 });
@@ -73,7 +73,7 @@ test("The surname regular expression for surnames with space", ()=> {
 test("The surname regular expression for surnames without space", ()=> {
 
     const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "NdzalaNkambule";
+    const surname = "ZuluNkambule";
 
     expect(surname).not.toMatch(surname_regex);
 });
@@ -81,7 +81,7 @@ test("The surname regular expression for surnames without space", ()=> {
 test("The surname regular expression for surnames with double spaces", ()=> {
 
     const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "Ndzala Nkambule Mzilikazi";
+    const surname = "Zulu Nkambule Mzilikazi";
 
     expect(surname).toMatch(surname_regex);
 });
@@ -89,7 +89,7 @@ test("The surname regular expression for surnames with double spaces", ()=> {
 test("The surname regular expression for surnames without double spaces", ()=> {
 
     const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "NdzalaNkambuleMzilikazi";
+    const surname = "ZuluNkambuleMzilikazi";
 
     expect(surname).not.toMatch(surname_regex);
 });
@@ -113,7 +113,7 @@ test("The surname regular expression for surnames with a special character, spac
 test("The surname regular expression for surnames with hyphen", ()=> {
 
     const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "Ndzala-Nkambule";
+    const surname = "Zulu-Nkambule";
 
     expect(surname).toMatch(surname_regex);
 });
