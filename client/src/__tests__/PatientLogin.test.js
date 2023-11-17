@@ -4,44 +4,24 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import userEvent from "@testing-library/user-event";
 import App from '../App';
 
-test("name label renders successfully", ()=> {
+test("id label renders successfully", ()=> {
     
     render(
     <Router>
       <PatientLogin/> 
     </Router>);
-    const name_label = screen.getByLabelText('Name:');
-    expect(name_label).toBeInTheDocument();
+    const id_label = screen.getByLabelText('Id Number:');
+    expect(id_label).toBeInTheDocument();
 });
 
-test("name input field renders successfully", ()=> {
+test("id input field renders successfully", ()=> {
 
     render(
         <Router>
           <PatientLogin/> 
         </Router>);
-    const name_input_field = screen.getByPlaceholderText('Your name...');
-    expect(name_input_field).toBeInTheDocument();
-});
-
-test("surname label renders successfully", ()=> {
-
-    render(
-        <Router>
-          <PatientLogin/> 
-        </Router>);
-    const surname_label = screen.getByLabelText('Surname:');
-    expect(surname_label).toBeInTheDocument();
-});
-
-test("surname input field renders successfully", ()=> {
-
-    render(
-        <Router>
-          <PatientLogin/> 
-        </Router>);
-    const surname_input_field = screen.getByPlaceholderText('Your surname...');
-    expect(surname_input_field).toBeInTheDocument();
+    const id_input_field = screen.getByPlaceholderText('Enter valid ID number...');
+    expect(id_input_field).toBeInTheDocument();
 });
 
 test("password label renders successfully", ()=> {
@@ -60,7 +40,7 @@ test("password input field renders successfully", ()=> {
         <Router>
           <PatientLogin/> 
         </Router>);
-    const password_input_field = screen.getByPlaceholderText('Your password...')
+    const password_input_field = screen.getByPlaceholderText('Enter password...')
     expect(password_input_field).toBeInTheDocument();
 });
 

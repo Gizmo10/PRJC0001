@@ -1,143 +1,81 @@
-test("The name regular expression", ()=> {
+const id_regex = /^[0-9]{1}([0-9]{12})$/;
+const password_regex = /^[A-Z | a-z | 0-9]{1}([A-Z | a-z | 0-9]{5,8})$/;
 
-    const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "Sandi";
+test("The id regular expression", ()=> {
 
-    expect(name).toMatch(name_regex);
+    const id = "1234567891234";
+    expect(id).toMatch(id_regex);
 });
 
-test("The name regular expression with all capital letters", ()=> {
+test("The id regular expression with less than 13 digits", ()=> {
 
-    const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "SANDI";
-
-    expect(name).not.toMatch(name_regex);
-})
-
-test("The name regular expression without capital letter", ()=> {
-
-    const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "sandi";
-
-    expect(name).not.toMatch(name_regex);
+    const id = "12345678";
+    expect(id).not.toMatch(id_regex);
 });
 
-test("The name regular expression with digit at start", ()=> {
+test("The id regular expression with more than 13 digits", ()=> {
 
-    const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "1Sandi";
-
-    expect(name).not.toMatch(name_regex);
+    const id = "12345678912345";
+    expect(id).not.toMatch(id_regex);
 });
 
-test("The name regular expression with a special character at end", ()=> {
+test("The id regular expression starts without a number", ()=> {
 
-    const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "Sandi@";
-
-    expect(name).not.toMatch(name_regex);
+    const id = "s12345678";
+    expect(id).not.toMatch(id_regex);
 });
 
-test("The name regular expression with a special character in between", ()=> {
+test("The id regular expression ends without a digit", ()=> {
 
-    const name_regex = /^[A-Z]{1}[a-z]+$/;
-    const name = "San@di";
-
-    expect(name).not.toMatch(name_regex);
+    const id = "12345678@";
+    expect(id).not.toMatch(id_regex);
 });
 
-test("The surname regular expression", ()=> {
+test("The id regular expression with a character in between", ()=> {
 
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "Zulu";
-
-    expect(surname).toMatch(surname_regex);
+    const id = "1234r6789";
+    expect(id).not.toMatch(id_regex);
 });
 
-test("The surname regular expression for surnames with apostrophe", ()=> {
+test("The password regular expression six characters", ()=> {
 
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "O'neil";
-
-    expect(surname).toMatch(surname_regex);
+    const password = "A234cd";
+    expect(password).toMatch(password_regex);
 });
 
-test("The surname regular expression for surnames with space", ()=> {
+test("The password regular expression less than six characters", ()=> {
 
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "Zulu Nkambule";
-
-    expect(surname).toMatch(surname_regex);
+    const password = "Zulu3";
+    expect(password).not.toMatch(password_regex);
 });
 
-test("The surname regular expression for surnames without space", ()=> {
+test("The password regular expression nine characters", ()=> {
 
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "ZuluNkambule";
-
-    expect(surname).not.toMatch(surname_regex);
+    const password = "1234ft789";
+    expect(password).toMatch(password_regex);
 });
 
-test("The surname regular expression for surnames with double spaces", ()=> {
+test("The password regular expression with more than nine characters", ()=> {
 
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "Zulu Nkambule Mzilikazi";
-
-    expect(surname).toMatch(surname_regex);
+    const password = "Z2345tr89u";
+    expect(password).not.toMatch(password_regex);
 });
 
-test("The surname regular expression for surnames without double spaces", ()=> {
+test("The password regular expression starts with an illegal character", ()=> {
 
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "ZuluNkambuleMzilikazi";
-
-    expect(surname).not.toMatch(surname_regex);
+    const password = "@123456";
+    expect(password).not.toMatch(password_regex);
 });
 
-test("The surname regular expression for surnames with a space and hyphen", ()=> {
+test("The password regular expression ends with an illegal character", ()=> {
 
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "John Doe-Smith";
-
-    expect(surname).toMatch(surname_regex);
+    const password = "12345ty-";
+    expect(password).not.toMatch(password_regex);
 });
 
-test("The surname regular expression for surnames with a special character, space and hyphen", ()=> {
+test("The password regular expression contains an illegal character in between", ()=> {
 
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "John&Doe-Smith";
-
-    expect(surname).not.toMatch(surname_regex);
+    const password = "1234@6e";
+    expect(password).not.toMatch(password_regex);
 });
 
-test("The surname regular expression for surnames with hyphen", ()=> {
-
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "Zulu-Nkambule";
-
-    expect(surname).toMatch(surname_regex);
-});
-
-test("The surname regular expression for surnames that start with number", ()=> {
-
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "2ohn Doe-Smith";
-
-    expect(surname).not.toMatch(surname_regex);
-});
-
-test("The surname regular expression for surnames ending with apostrophe", ()=> {
-
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "O'";
-
-    expect(surname).not.toMatch(surname_regex);
-});
-
-test("The surname regular expression for surname with random letters", ()=> {
-
-    const surname_regex = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/
-    const surname = "John 65$%^Kgdg (HRY)e";
-
-    expect(surname).not.toMatch(surname_regex);
-});

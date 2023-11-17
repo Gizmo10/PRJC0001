@@ -6,33 +6,32 @@ import './PatientLogin.css';
 import ErrorBoundary from './ErrorBoundary';
 
 const initialState = {
-    name: "",
-    surname: "",
+    id: "",
     password: "",
 };
 
 const PatientLogin = () => {
 
     const [state, setState] = useState(initialState);
-    const {name, surname, password} = state;
+    const {id, password} = state;
     const navigate = useNavigate();
 
-    const name_pattern = /^[A-Z]{1}[a-z]+$/;
-    const surname_pattern = /^[A-Za-z]'?[a-z]+([\s | -][A-Za-z][a-z]+)*[a-z]$/;
+    const id_pattern = /^[0-9]{1}([0-9]{12})$/;
+    const password_pattern = /^[A-Z | a-z | 0-9]{1}([A-Z | a-z | 0-9]{5,8})$/
 
-    const validateName = () => {
+    const validateId = () => {
 
-      return  name_pattern.test(name);
+      return  id_pattern.test(id);
     };
 
-    const validateSurname = () => {
+    const validatePassword = () => {
 
-      return surname_pattern.test(surname);
+      return password_pattern.test(password);
     };
 
-    const validateUserLogin = () {
+    const validateUserLogin = ()=> {
 
-      if(validateName() && validateSurname()) {
+      if(validateId() && validatePassword()) {
 
       }
     };
@@ -45,7 +44,7 @@ const PatientLogin = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        (!name || !surname || !password) ?
+        (!id || !password) ?
           toast.error("One of the fields is missing a value.") : toast.success("correct input");
 
     };
@@ -56,40 +55,28 @@ const PatientLogin = () => {
             onSubmit = { handleSubmit }
       >
         <ErrorBoundary fallback="error occured">
-        <label htmlFor="name">Name: </label>
+        <label htmlFor="id">Id Number: </label>
         <input
           type="text"
-          id="name"
-          name="name"
-          placeholder="Your name..."
-          value={name || ""}
+          id="id"
+          name="id"
+          placeholder="Enter valid ID number..."
+          value={id || ""}
           onChange={handleInputChange}
         />
         </ErrorBoundary>
 
        <ErrorBoundary fallback="error occured">
-       <label htmlFor="surname">Surname: </label>
+       <label htmlFor="password">Password: </label>
         <input
-        type = "text"
-        id = "surname"
-        name = "surname"
-        placeholder = "Your surname..."
-        value = {surname || ""}
-        onChange = {handleInputChange}
-        />
-       </ErrorBoundary>
-
-      <ErrorBoundary fallback="error occured">
-      <label htmlFor="password"> Password: </label>
-        <input 
         type = "text"
         id = "password"
         name = "password"
-        placeholder = "Your password..."
+        placeholder = "Enter password..."
         value = {password || ""}
         onChange = {handleInputChange}
         />
-      </ErrorBoundary>
+       </ErrorBoundary>
       
       <ErrorBoundary fallback="error occurred">
         <input type="submit" value="Login" id="Login"/>
