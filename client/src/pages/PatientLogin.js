@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify"
-/*import axios from "axios";*/
+import axios from "axios";
 import './PatientLogin.css';
 import ErrorBoundary from './ErrorBoundary';
 
@@ -20,20 +19,15 @@ const PatientLogin = () => {
     const password_pattern = /^[A-Z | a-z | 0-9]{1}([A-Z | a-z | 0-9]{5,8})$/
 
     const validateId = () => {
-
       return  id_pattern.test(id);
     };
 
     const validatePassword = () => {
-
       return password_pattern.test(password);
     };
 
-    const validateUserLogin = ()=> {
-
-      if(validateId() && validatePassword()) {
-
-      }
+    const validatePatientCredentials = ()=> {
+     return validateId() && validatePassword();
     };
 
     const handleInputChange = (e) => {
@@ -41,12 +35,25 @@ const PatientLogin = () => {
         setState({...state, [name] : value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+       
+        await axios.get(`http://localhost:8080/patient/loginUser`, {
+          params: {
+              patientId : id,
+              patientPassword: password      
+                }
+             } 
+          ).then((response) => {
 
-        (!id || !password) ?
-          toast.error("One of the fields is missing a value.") : toast.success("correct input");
-
+            if(response.data && validatePatientCredentials()) {
+              navigate(`/PatientWelcomeScreen/${id}`);
+            } else {
+              window.alert("No user registered under that name");
+            }
+          }).catch((err) => {
+            console.log(err.response.data);
+          });   
     };
 
   return (

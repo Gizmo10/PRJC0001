@@ -73,7 +73,7 @@ test("renders the react App root element", ()=> {
     screen.debug();
 });
 
-/*test("The register button navigates to the Registration page", ()=> {
+test("The register button navigates to the Registration page", ()=> {
 
     render(
         <Router>
@@ -83,9 +83,10 @@ test("renders the react App root element", ()=> {
     expect(register_button).toBeInTheDocument();
 
     userEvent.click(register_button);
+    const patient_register_screen = screen.getByText("PatientRegister");
     
-    expect(screen.getByText(/PatientRegister/i).toBeInTheDocument());
-}); */
+    expect(patient_register_screen).toBeInTheDocument();
+}); 
 
 
 
