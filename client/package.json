@@ -24,7 +24,8 @@
       "global": {
         "lines": 80
       }
-    }
+    },
+    "transformIgnorePatterns": ["node_modules/(?!axios)/"] 
   },
   "eslintConfig": {
     "extends": [
