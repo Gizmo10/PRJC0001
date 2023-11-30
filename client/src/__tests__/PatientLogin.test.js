@@ -1,5 +1,6 @@
 import {render, screen} from '@testing-library/react';
 import PatientLogin from '../pages/PatientLogin';
+import Pages from '../pages/Pages';
 import { BrowserRouter as Router } from 'react-router-dom';
 import userEvent from "@testing-library/user-event";
 import App from '../App';
@@ -60,7 +61,7 @@ test("register button renders successfully", ()=> {
         <Router>
           <PatientLogin/> 
         </Router>);
-    const register_button = screen.getByText("Register");
+    const register_button = screen.getByText('Register');
     expect(register_button).toBeInTheDocument();
 });
 
@@ -73,19 +74,18 @@ test("renders the react App root element", ()=> {
     screen.debug();
 });
 
-test("The register button navigates to the Registration page", ()=> {
-
+test("The register button navigates to the Registration page", async ()=> {
+    userEvent.setup();
     render(
         <Router>
-          <PatientLogin/> 
+          < Pages/>
         </Router>);
-    const register_button = screen.getByText("Register");
+    const register_button = screen.getByText('Register');
     expect(register_button).toBeInTheDocument();
 
-    userEvent.click(register_button);
-    const patient_register_screen = screen.getByText("PatientRegister");
-    
-    expect(patient_register_screen).toBeInTheDocument();
+    await userEvent.click(register_button);
+    const register_name_label = screen.getByLabelText('Name:');
+    expect(register_name_label).toBeInTheDocument();
 }); 
 
 

@@ -6,6 +6,7 @@ import PatientLogin from "./pages/PatientLogin";
 import PatientRegister from "./pages/PatientRegister";
 import ErrorBoundary from "./pages/ErrorBoundary";
 import PatientWelcomeScreen from "./pages/PatientWelcomeScreen";
+import Pages from "./pages/Pages";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
              <Route exact path="/" element= { <PatientLogin/> } />
              <Route path="/PatientRegister" element= { <PatientRegister/> } />
              <Route path="/PatientWelcomeScreen" element={ <PatientWelcomeScreen/> } />
+             <Route path="/Pages" element={ <Pages/> } />
             </Routes>
         </div>
     </ErrorBoundary>

@@ -67,7 +67,6 @@ const PatientLogin = () => {
           type="text"
           id="id"
           name="id"
-          placeholder="Enter valid ID number..."
           value={id || ""}
           onChange={handleInputChange}
         />
@@ -79,7 +78,6 @@ const PatientLogin = () => {
         type = "text"
         id = "password"
         name = "password"
-        placeholder = "Enter password..."
         value = {password || ""}
         onChange = {handleInputChange}
         />

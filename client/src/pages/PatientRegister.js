@@ -1,9 +1,33 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ErrorBoundary from './ErrorBoundary';
+import './PatientRegister.css';
+
+const initialState = {
+  name: "",
+  surname:"",
+  id:"",
+  birthdate:"",
+  cellphone:"",
+  email:"",
+  password:"",
+  rePassword:"",
+  street:"",
+  suburb:"",
+  city:"",
+  code:"",
+  province:"",
+  idF:"",
+};
 
 const PatientRegister = () => {
+  const [state, setState] = useState(initialState);
+  const{name,surname,id,birthdate,cellphone,email,password,rePassword,
+    street,suburb,city,code,province,idF} = state;
+
   const handleInputChange = (e) => {
     const { name, value} = e.target;
+    setState({...state, [name]:value});
+    console.log(state);
 };
 
 const handleSubmit = async (e) => {
@@ -13,14 +37,12 @@ const handleSubmit = async (e) => {
   return (
     <div className="patientRegister">
       <form onSubmit={handleSubmit} >
-        <section id="row">
         <ErrorBoundary fallback="error occured">
         <label htmlFor="name">Name: </label>
         <input
           type="text"
           id="name"
           name="name"
-          placeholder="Enter valid name..."
           value={name || ""}
           onChange={handleInputChange}
         />
@@ -32,22 +54,17 @@ const handleSubmit = async (e) => {
           type="text"
           id="surname"
           name="surname"
-          placeholder="Enter surname..."
           value={surname || ""}
           onChange={handleInputChange}
         />
         </ErrorBoundary>
-        </section>
-
         
-        <section id="row">
         <ErrorBoundary fallback="error occured">
         <label htmlFor="id">Id Number: </label>
         <input
           type="text"
           id="id"
           name="id"
-          placeholder="Enter valid Id number..."
           value={id || ""}
           onChange={handleInputChange}
         />
@@ -63,16 +80,13 @@ const handleSubmit = async (e) => {
           onChange={handleInputChange}
         />
         </ErrorBoundary>
-        </section>
 
-        <section id="row">
         <ErrorBoundary fallback="error occured">
         <label htmlFor="cellphone">Cell Number: </label>
         <input
           type="text"
           id="cellphone"
           name="cellphone"
-          placeholder="Enter valid cellphone number..."
           value={cellphone || ""}
           onChange={handleInputChange}
         />
@@ -88,34 +102,29 @@ const handleSubmit = async (e) => {
           onChange={handleInputChange}
         />
         </ErrorBoundary>
-        </section>
 
-        <section id="row">
         <ErrorBoundary fallback="error occured">
         <label htmlFor="password">Password: </label>
         <input
           type="text"
           id="password"
           name="password"
-          placeholder="Enter valid password..."
           value={password || ""}
           onChange={handleInputChange}
         />
         </ErrorBoundary>
 
         <ErrorBoundary fallback="error occured">
-        <label htmlFor="re-password">Re-Type Password: </label>
+        <label htmlFor="rePassword">Re-Type Password: </label>
         <input
           type="text"
-          id="re-password"
-          name="re-password"
-          value={re-password || ""}
+          id="rePassword"
+          name="rePassword"
+          value={rePassword || ""}
           onChange={handleInputChange}
         />
         </ErrorBoundary>
-        </section>
 
-        <section id="row">
         <ErrorBoundary fallback="error occured">
         <label htmlFor="street">Street: </label>
         <input
@@ -133,14 +142,11 @@ const handleSubmit = async (e) => {
           type="text"
           id="surbub"
           name="surbub"
-          placeholder="suburb..."
           value={suburb || ""}
           onChange={handleInputChange}
         />
         </ErrorBoundary>
-        </section>
         
-        <section id="row">
         <ErrorBoundary fallback="error occured">
         <label htmlFor="city">City: </label>
         <input
@@ -162,9 +168,7 @@ const handleSubmit = async (e) => {
           onChange={handleInputChange}
         />
         </ErrorBoundary>
-        </section>
 
-        <section id="prov">
         <ErrorBoundary fallback="error occured">
         <label htmlFor="province">Province: </label>
         <input
@@ -175,9 +179,7 @@ const handleSubmit = async (e) => {
           onChange={handleInputChange}
         />
         </ErrorBoundary>
-        </section>
 
-        <section id="idF">
         <ErrorBoundary fallback="error occured">
         <label htmlFor="idF">Upload ID: </label>
         <input
@@ -188,8 +190,7 @@ const handleSubmit = async (e) => {
           onChange={handleInputChange}
         />
         </ErrorBoundary>
-        </section>
-        
+
       </form>
       </div>
   )
