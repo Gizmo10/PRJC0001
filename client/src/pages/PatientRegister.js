@@ -43,6 +43,7 @@ const handleSubmit = async (e) => {
           type="text"
           id="name"
           name="name"
+          placeholder="Enter name..."
           value={name || ""}
           onChange={handleInputChange}
         />
@@ -54,6 +55,7 @@ const handleSubmit = async (e) => {
           type="text"
           id="surname"
           name="surname"
+          placeholder="Enter surname..."
           value={surname || ""}
           onChange={handleInputChange}
         />
@@ -65,6 +67,7 @@ const handleSubmit = async (e) => {
           type="text"
           id="id"
           name="id"
+          placeholder="Enter ID number..."
           value={id || ""}
           onChange={handleInputChange}
         />
@@ -87,6 +90,7 @@ const handleSubmit = async (e) => {
           type="text"
           id="cellphone"
           name="cellphone"
+          placeholder="Enter cellphone number..."
           value={cellphone || ""}
           onChange={handleInputChange}
         />
@@ -98,6 +102,7 @@ const handleSubmit = async (e) => {
           type="text"
           id="email"
           name="email"
+          placeholder="Enter email..."
           value={email || ""}
           onChange={handleInputChange}
         />
@@ -109,6 +114,7 @@ const handleSubmit = async (e) => {
           type="text"
           id="password"
           name="password"
+          placeholder="Enter password..."
           value={password || ""}
           onChange={handleInputChange}
         />
@@ -120,6 +126,7 @@ const handleSubmit = async (e) => {
           type="text"
           id="rePassword"
           name="rePassword"
+          placeholder="Re-enter password..."
           value={rePassword || ""}
           onChange={handleInputChange}
         />
@@ -131,6 +138,7 @@ const handleSubmit = async (e) => {
           type="text"
           id="street"
           name="street"
+          placeholder="Enter street..."
           value={street || ""}
           onChange={handleInputChange}
         />
@@ -140,8 +148,9 @@ const handleSubmit = async (e) => {
         <label htmlFor="suburb">Suburb: </label>
         <input
           type="text"
-          id="surbub"
-          name="surbub"
+          id="suburb"
+          name="suburb"
+          placeholder="Enter suburb..."
           value={suburb || ""}
           onChange={handleInputChange}
         />
@@ -153,6 +162,7 @@ const handleSubmit = async (e) => {
           type="text"
           id="city"
           name="city"
+          placeholder="Enter city..."
           value={city || ""}
           onChange={handleInputChange}
         />
@@ -164,6 +174,7 @@ const handleSubmit = async (e) => {
           type="text"
           id="code"
           name="code"
+          placeholder="Enter postal code..."
           value={code || ""}
           onChange={handleInputChange}
         />
@@ -175,6 +186,7 @@ const handleSubmit = async (e) => {
           type="text"
           id="province"
           name="province"
+          placeholder="Enter province..."
           value={province || ""}
           onChange={handleInputChange}
         />

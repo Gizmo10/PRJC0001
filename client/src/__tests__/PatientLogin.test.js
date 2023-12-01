@@ -21,7 +21,7 @@ test("id input field renders successfully", ()=> {
         <Router>
           <PatientLogin/> 
         </Router>);
-    const id_input_field = screen.getByPlaceholderText('Enter valid ID number...');
+    const id_input_field = screen.getByPlaceholderText('Enter ID number...');
     expect(id_input_field).toBeInTheDocument();
 });
 
