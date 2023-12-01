@@ -83,3 +83,5 @@ class PatientRegex{
         this.generic_pattern.test(gen);
     }
 }
+
+export default PatientRegex

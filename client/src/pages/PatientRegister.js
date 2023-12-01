@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import ErrorBoundary from './ErrorBoundary';
+import ErrorBoundary from '../helper classes/ErrorBoundary';
 import './PatientRegister.css';
 
 const initialState = {

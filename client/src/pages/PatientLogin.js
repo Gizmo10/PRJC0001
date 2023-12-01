@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './PatientLogin.css';
-import ErrorBoundary from './ErrorBoundary';
+import ErrorBoundary from '../helper classes/ErrorBoundary';
 
 const initialState = {
     id: "",

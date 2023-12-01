@@ -4,7 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import './App.css';
 import PatientLogin from "./pages/PatientLogin";
 import PatientRegister from "./pages/PatientRegister";
-import ErrorBoundary from "./pages/ErrorBoundary";
+import ErrorBoundary from "./helper classes/ErrorBoundary";
 import PatientWelcomeScreen from "./pages/PatientWelcomeScreen";
 import Pages from "./pages/Pages";
 

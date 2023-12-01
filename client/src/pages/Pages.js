@@ -1,6 +1,6 @@
 import React from 'react'
 import {Routes, Route } from "react-router-dom";
-import ErrorBoundary from './ErrorBoundary';
+import ErrorBoundary from '../helper classes/ErrorBoundary';
 import PatientLogin from './PatientLogin';
 import PatientRegister from './PatientRegister';
 
