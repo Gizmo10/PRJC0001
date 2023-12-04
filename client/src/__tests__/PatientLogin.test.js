@@ -21,7 +21,7 @@ test("id input field renders successfully", ()=> {
         <Router>
           <PatientLogin/> 
         </Router>);
-    const id_input_field = screen.getByPlaceholderText('Enter ID number...');
+    const id_input_field = document.getElementById('id');
     expect(id_input_field).toBeInTheDocument();
 });
 
@@ -41,7 +41,7 @@ test("password input field renders successfully", ()=> {
         <Router>
           <PatientLogin/> 
         </Router>);
-    const password_input_field = screen.getByPlaceholderText('Enter password...')
+    const password_input_field = document.getElementById('password')
     expect(password_input_field).toBeInTheDocument();
 });
 

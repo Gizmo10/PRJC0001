@@ -1,13 +1,15 @@
 class PatientRegex{
     constructor(){
         this.name_pattern = /^[A-Z]([a-z]{2,30})$/;
-        this.surname_pattern = /^[A-Z][a-z]{2,20}([\s | -][A-Z][a-z]{2,20}){0,2}/;
+        this.surname_pattern = /^[A-Z][a-z]{2,20}([\s | -][A-Z][a-z]{2,20}){0,2}[a-z]$/;
         this.id_pattern = /^[0-9]{13}$/;
         this.password_pattern = /^[A-Z | a-z | 0-9]{6,9}$/;
-        this.birthdate_pattern = /^[1][89][0-9]{2} | ^[2][0][0-9]{2}/;
-        this.cellphone_pattern = /^[\+][0-9]{11}$ | ^[0][0-9]{10}$/;
-        this.email_pattern = /^[A-Za-z][A-Za-z0-9]{2,20}([.][0-9A-Za-z]{2,30})?[@][a-z]{2,30}[.][com|org|co.za]/;
-        this.generic_pattern = /^[A-Z][a-z]{2,20}((\s[A-Z][a-z]{2,20}){1,3})$/;
+        this.birthdate_pattern_1900 = /^[1][8 | 9][0-9]{2}/
+        this.birthdate_pattern_2000 = /^[2][0][0-9]{2}/;
+        this.cellphone_pattern_code = /^[\+][0-9]{11}$/;
+        this.cellphone_pattern =  /^[0][0-9]{9}$/;
+        this.email_pattern = /^[A-Z | a-z][A-Z | a-z |0-9]{2,20}([.][0-9 | A-Z | a-z]{2,30})?[@][a-z]{2,30}[.](com)$/;
+        this.generic_pattern = /^[A-Z][a-z]{1,20}((\s[A-Z][a-z]{2,20}){0,3})$/;
         this.postal_pattern = /^[0-9]{4}$/;
     }
 
@@ -27,8 +29,16 @@ class PatientRegex{
         return this.password_pattern;
     }
 
-    getBirthdatePattern(){
-        return this.birthdate_pattern;
+    getBirthdatePattern1900(){
+        return this.birthdate_pattern_1900;
+    }
+
+    getBirthdatePattern2000(){
+        return this.birthdate_pattern_2000;
+    }
+
+    getCellphonePattern_code(){
+        return this.cellphone_pattern_code;
     }
 
     getCellphonePattern(){
@@ -59,8 +69,12 @@ class PatientRegex{
         this.id_pattern.test(id);
     }
 
-    validateBirthdate(birthdate){
-        this.birthdate_pattern.test(birthdate);
+    validateBirthdate1900(birthdate){
+        this.birthdate_pattern1900.test(birthdate);
+    }
+
+    validateBirthdate2000(birthdate){
+        this.birthdate_pattern2000.test(birthdate);
     }
 
     validatePassword(password){
@@ -70,6 +84,11 @@ class PatientRegex{
     validateCellphone(cellphone){
         this.cellphone_pattern.test(cellphone);
     }
+
+    validateCellphoneCode(cellphone){
+        this.cellphone_pattern_code.test(cellphone);
+    }
+
 
     validateEmail(email){
         this.email_pattern.test(email);

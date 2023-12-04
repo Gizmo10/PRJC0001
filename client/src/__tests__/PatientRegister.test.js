@@ -18,7 +18,7 @@ test("name input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const name_input_field = screen.getByPlaceholderText('Enter name...');
+    const name_input_field = document.getElementById('name');
     expect(name_input_field).toBeInTheDocument();
 });
 
@@ -38,7 +38,7 @@ test("surname input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const surname_input_field = screen.getByPlaceholderText('Enter surname...');
+    const surname_input_field = document.getElementById('surname');
     expect(surname_input_field).toBeInTheDocument();
 });
 
@@ -58,7 +58,7 @@ test("id input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const id_input_field = screen.getByPlaceholderText('Enter ID number...');
+    const id_input_field = document.getElementById('id');
     expect(id_input_field).toBeInTheDocument();
 });
 
@@ -78,7 +78,7 @@ test("birthdate input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const birthdate_input_field = document.getElementById("birthdate")//screen.getByPlaceholderText('yyyy/mm/dd');
+    const birthdate_input_field = document.getElementById("birthdate");
     expect(birthdate_input_field).toBeInTheDocument();
 });
 
@@ -98,7 +98,7 @@ test("cellphone input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const cellphone_input_field = screen.getByPlaceholderText('Enter cellphone number...');
+    const cellphone_input_field = document.getElementById('cellphone');
     expect(cellphone_input_field).toBeInTheDocument();
 });
 
@@ -118,7 +118,7 @@ test("email input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const email_input_field = screen.getByPlaceholderText('Enter email...');
+    const email_input_field = document.getElementById('email');
     expect(email_input_field).toBeInTheDocument();
 });
 
@@ -138,7 +138,7 @@ test("password input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const password_input_field = screen.getByPlaceholderText('Enter password...');
+    const password_input_field = document.getElementById('password');
     expect(password_input_field).toBeInTheDocument();
 });
 
@@ -158,7 +158,7 @@ test("retype input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const retype_input_field = screen.getByPlaceholderText('Re-enter password...');
+    const retype_input_field = document.getElementById('rePassword');
     expect(retype_input_field).toBeInTheDocument();
 });
 
@@ -178,7 +178,7 @@ test("street input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const street_input_field = screen.getByPlaceholderText('Enter street...');
+    const street_input_field = document.getElementById('street');
     expect(street_input_field).toBeInTheDocument();
 });
 
@@ -198,7 +198,7 @@ test("suburb input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const suburb_input_field = screen.getByPlaceholderText('Enter suburb...');
+    const suburb_input_field = document.getElementById('suburb');
     expect(suburb_input_field).toBeInTheDocument();
 });
 
@@ -218,7 +218,7 @@ test("city input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const city_input_field = screen.getByPlaceholderText('Enter city...');
+    const city_input_field = document.getElementById('city');
     expect(city_input_field).toBeInTheDocument();
 });
 
@@ -238,7 +238,7 @@ test("postalcode input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const postalcode_input_field = screen.getByPlaceholderText('Enter postal code...');
+    const postalcode_input_field = document.getElementById('code');
     expect(postalcode_input_field).toBeInTheDocument();
 });
 
@@ -258,7 +258,7 @@ test("province input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const province_input_field = screen.getByPlaceholderText('Enter province...');
+    const province_input_field = document.getElementById('province');
     expect(province_input_field).toBeInTheDocument();
 });
 
@@ -278,7 +278,7 @@ test("idupload input field renders successfully", ()=> {
         <Router>
           <PatientRegister/> 
         </Router>);
-    const idupload_input_field = document.getElementById("idF")//screen.getByDisplayValue('Choose File');
+    const idupload_input_field = document.getElementById("idF");
     expect(idupload_input_field).toBeInTheDocument();
 });
 
