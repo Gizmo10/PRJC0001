@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './PatientLogin.css';
 import ErrorBoundary from '../helper classes/ErrorBoundary';
+import PatientRegex from '../helper classes/PatientRegexClass';
 
 const initialState = {
     id: "",
@@ -14,20 +15,10 @@ const PatientLogin = () => {
     const [state, setState] = useState(initialState);
     const {id, password} = state;
     const navigate = useNavigate();
-
-    const id_pattern = /^[0-9]{1}([0-9]{12})$/;
-    const password_pattern = /^[A-Z | a-z | 0-9]{1}([A-Z | a-z | 0-9]{5,8})$/
-
-    const validateId = () => {
-      return  id_pattern.test(id);
-    };
-
-    const validatePassword = () => {
-      return password_pattern.test(password);
-    };
+    const patient = new PatientRegex();
 
     const validatePatientCredentials = ()=> {
-     return validateId() && validatePassword();
+     return patient.validateId(id) && patient.validatePassword(password);
     };
 
     const handleInputChange = (e) => {
