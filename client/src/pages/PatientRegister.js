@@ -27,7 +27,6 @@ const PatientRegister = () => {
   const handleInputChange = (e) => {
     const { name, value} = e.target;
     setState({...state, [name]:value});
-    console.log(state);
 };
 
 const handleSubmit = async (e) => {

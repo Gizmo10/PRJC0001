@@ -10,6 +10,7 @@ class PatientRegex{
         this.cellphone_pattern =  /^[0][0-9]{9}$/;
         this.email_pattern = /^[A-Z | a-z][A-Z | a-z |0-9]{2,20}([.][0-9 | A-Z | a-z]{2,30})?[@][a-z]{2,30}[.](com)$/;
         this.generic_pattern = /^[A-Z][a-z]{1,20}((\s[A-Z][a-z]{2,20}){0,3})$/;
+        this.street_pattern = /^[0-9]{1,6}[A-Z | a-z]{0,2}((\s[A-Z][a-z]{2,20}){1,4})$/
         this.postal_pattern = /^[0-9]{4}$/;
     }
 
@@ -53,6 +54,10 @@ class PatientRegex{
         return this.generic_pattern;
     }
 
+    getStreetPattern(){
+        return this.street_pattern;
+    }
+
     getPostalPattern(){
         return this.postal_pattern;
     }
@@ -70,11 +75,11 @@ class PatientRegex{
     }
 
     validateBirthdate1900(birthdate){
-        this.birthdate_pattern1900.test(birthdate);
+        this.birthdate_pattern_1900.test(birthdate);
     }
 
     validateBirthdate2000(birthdate){
-        this.birthdate_pattern2000.test(birthdate);
+        this.birthdate_pattern_2000.test(birthdate);
     }
 
     validatePassword(password){
@@ -96,6 +101,10 @@ class PatientRegex{
 
     validatePostalCode(postal){
         this.postal_pattern.test(postal);
+    }
+
+    validateStreetName(street){
+        this.street_pattern.test(street);
     }
 
     validateGeneric(gen){

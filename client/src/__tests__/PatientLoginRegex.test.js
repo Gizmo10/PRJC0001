@@ -246,6 +246,46 @@ test("The postal regular expression with an illegal length", ()=> {
     expect(postalCode).not.toMatch(patientRegex.getPostalPattern());
 })
 
+test("The street regular expression", ()=> {
+    const street = "1 Adelaide Street";
+    expect(street).toMatch(patientRegex.getStreetPattern());
+})
+
+test("The street regular expression with appended letter", ()=> {
+    const street = "22A Adelaide Street";
+    expect(street).toMatch(patientRegex.getStreetPattern());
+})
+
+test("The street regular expression with multiple words", ()=> {
+    const street = "23452a Adelaide Dawie King Street";
+    expect(street).toMatch(patientRegex.getStreetPattern());
+})
+
+test("The street regular expression starts with illegal expression", ()=> {
+    const street = "@ Adelaide Street";
+    expect(street).not.toMatch(patientRegex.getStreetPattern());
+})
+
+test("The street regular expression contains an illegal expression", ()=> {
+    const street = "12a Adelaide St9eet";
+    expect(street).not.toMatch(patientRegex.getStreetPattern());
+})
+
+test("The street regular expression ends with an illegal expression", ()=> {
+    const street = "1 Adelaide Street3";
+    expect(street).not.toMatch(patientRegex.getStreetPattern());
+})
+
+test("The street regular expression with no street name", ()=> {
+    const street = "112E";
+    expect(street).not.toMatch(patientRegex.getStreetPattern());
+})
+
+test("The street regular expression without a house number", ()=> {
+    const street = "Adelaide Street";
+    expect(street).not.toMatch(patientRegex.getStreetPattern());
+})
+
 test("The generic regular expression without space", ()=> {
     const gen = "Gizmo";
     expect(gen).toMatch(patientRegex.getGenericPattern());
