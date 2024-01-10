@@ -31,8 +31,8 @@ const PatientLogin = () => {
        
         await axios.get(`http://localhost:8080/patient/loginUser`, {
           params: {
-              patientId : id,
-              patientPassword: password      
+              id : id,
+              password: password      
                 }
              } 
           ).then((response) => {

@@ -11,7 +11,7 @@ test("The name input field warns user for invalid input", ()=> {
           <PatientRegister/> 
         </Router>);
     const name = "5ames"    
-    const res = validateRegistration.validRegistrationName(name);
+    const res = validateRegistration.validateRegistrationName(name);
     const name_input_field = document.getElementById('name');
 
     expect(res).toBe(false);
@@ -209,6 +209,88 @@ test("The code input field warns user of invalid input", ()=> {
     expect(elem.innerText).toBe('The postal code format is not valid');
 })
 
+test("User with valid input", ()=> {
+    render(
+        <Router>
+          <PatientRegister/> 
+        </Router>);
+
+    const state = {
+        name: "King",
+        surname: "Joe",
+        id: "9405134335088",
+        birthdate: "1994-05-13",
+        cellphone: "0635430900",
+        email: "greet@gmail.com",
+        password: "tyr54HUI",
+        rePassword: "tyr54HUI",
+        street: "12 Oak Street",
+        suburb: "Crystal Park",
+        city: "Benoni",
+        code: "0987",
+        province: "Gauteng",
+        idF: "Rand"
+    };
+
+    expect(validateRegistration.validateAll(state)).toBe(true);
+})
+
+test("User with passwords not matching", ()=> {
+    render(
+        <Router>
+          <PatientRegister/> 
+        </Router>);
+
+    const state = {
+        name: "King",
+        surname: "Joe",
+        id: "9405134335088",
+        birthdate: "1994-05-13",
+        cellphone: "0635430900",
+        email: "greet@gmail.com",
+        password: "tyr54HUI",
+        rePassword: "tyR54HUI",
+        street: "12 Oak Street",
+        suburb: "Crystal Park",
+        city: "Benoni",
+        code: "0987",
+        province: "Gauteng",
+        idF: "Rand"
+    };
+
+    expect(validateRegistration.validateAll(state)).toBe(false);
+})
+
+test("User with empty ID field", ()=> {
+    render(
+        <Router>
+          <PatientRegister/> 
+        </Router>);
+
+    const state = {
+        name: "King",
+        surname: "Joe",
+        id: "9405134335088",
+        birthdate: "1994-05-13",
+        cellphone: "0113456343",
+        email: "greet@gmail.com",
+        password: "tyr54HUI",
+        rePassword: "tyr54HUI",
+        street: "12 Oak Street",
+        suburb: "Crystal Park",
+        city: "Benoni",
+        code: "0987",
+        province: "Gauteng",
+        idF: ""
+    };
+
+    expect(validateRegistration.validateAll(state)).toBe(false);
+})
+
+test("User with an empty form", ()=> {
+    const state = {};
+    expect(validateRegistration.validateAll(state)).toBe(false);
+})
 
 
 

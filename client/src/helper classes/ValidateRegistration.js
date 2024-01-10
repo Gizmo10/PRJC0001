@@ -1,11 +1,12 @@
-import PatientRegex from '../helper classes/PatientRegexClass';
+import PatientRegex from './PatientRegexClass';
 
 class ValidateRegistration{
+
     constructor(){
         this.patient = new PatientRegex();
     }
 
-    validRegistrationName(name) {
+    validateRegistrationName(name) {
         if(!this.patient.validateName(name)) {
             const elem = document.getElementById("name");
             elem.innerText = "The name format is not valid";
@@ -146,6 +147,56 @@ class ValidateRegistration{
             return false;
         }
         return true;
+    }
+
+    validateAll(state) {
+        if(Object.keys(state).length === 0) {
+            return false;
+        }
+
+        let {name, surname,id,birthdate,cellphone,email,password,rePassword,
+        street,suburb,city,code,province,idF} = state;
+
+        var is_valid_name = this.validateRegistrationName(name);
+        console.log(`name: ${is_valid_name}`);
+        var is_valid_surname = this.ValidateRegistrationSurname(surname);
+        console.log(`surname: ${is_valid_surname}`);
+        var is_valid_id = this.validateRegistrationId(id);
+        console.log(`id: ${is_valid_id}`);
+        var is_valid_birthdate = this.validateRegistrationBirthdate(birthdate);
+        console.log(`birthdate: ${is_valid_birthdate}`);
+        var id_matches_birthdate = this.validateRegistrationBirthdateMatchesId(id,birthdate);
+        console.log(`birthdate matched id: ${id_matches_birthdate}`);
+        var is_valid_cellphone = this.validateRegistrationCellphone(cellphone);
+        console.log(`cellphone: ${is_valid_cellphone}`);
+        var is_valid_email = this.validateRegistrationEmail(email);
+        console.log(`email: ${is_valid_email}`);
+        var is_valid_password = this.validateRegistrationPassword(password);
+        console.log(`password: ${is_valid_password}`);
+        var is_valid_repassword = this.validateRegistrationRePassword(rePassword);
+        console.log(`repassword: ${is_valid_repassword}`);
+        var password_matches_repassword = 
+        this.validateRegistrationPasswordMatchesRetypedPassword(password,rePassword);
+        console.log(`passwords match: ${password_matches_repassword}`);
+        var is_valid_street = this.validateRegistrationStreet(street);
+        console.log(`street: ${is_valid_street}`);
+        var is_valid_suburb = this.validateRegistrationSuburb(suburb);
+        console.log(`suburb: ${is_valid_suburb}`);
+        var is_valid_city = this.validateRegistrationCity(city);
+        console.log(`city: ${is_valid_city}`);
+        var is_valid_code = this.validateRegistrationPostalCode(code);
+        console.log(`code: ${is_valid_code}`);
+        var is_valid_province = this.validateRegistrationProvince(province);
+        console.log(`province: ${is_valid_province}`);
+        var id_not_empty = idF.length != 0;
+        console.log(`id file: ${id_not_empty}`);
+        
+
+        return (is_valid_name && is_valid_surname && is_valid_id && is_valid_birthdate
+            && id_matches_birthdate && is_valid_cellphone && is_valid_email && is_valid_password
+             && is_valid_repassword && password_matches_repassword && is_valid_street && is_valid_suburb
+             && is_valid_city && is_valid_code && is_valid_province && id_not_empty
+            );
     }
 }
 

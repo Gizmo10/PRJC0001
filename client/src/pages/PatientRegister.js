@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import ErrorBoundary from '../helper classes/ErrorBoundary';
 import './PatientRegister.css';
+import ValidateRegistration from '../helper classes/ValidateRegistration';
+import axios from 'axios';
 
 const initialState = {
   name: "",
@@ -23,6 +25,7 @@ const PatientRegister = () => {
   const [state, setState] = useState(initialState);
   const{name,surname,id,birthdate,cellphone,email,password,rePassword,
     street,suburb,city,code,province,idF} = state;
+  const patient = new ValidateRegistration();
 
   const handleInputChange = (e) => {
     const { name, value} = e.target;
@@ -31,6 +34,43 @@ const PatientRegister = () => {
 
 const handleSubmit = async (e) => {
   e.preventDefault();
+ 
+  if(patient.validateAll(state)) {
+
+    await axios.post(`http://localhost:8080/patient/addPatientCredentials`,null,{
+    params : {
+      id : id,
+      password: password
+      }
+    }
+    ).then(() => {
+      console.log("Patient credentials stored successfully");
+
+    }).catch((error) => {
+      console.log(error);
+    })
+
+    await axios.post(`http://localhost:8080/patient/registerPatient`, {
+      name : name,
+      surname : surname,
+      id: id,
+      birthdate: birthdate,
+      cellphoneNumber : cellphone,
+      email : email,
+      streetName : street,
+      suburb : suburb,
+      city : city,
+      postalCode : code,
+      province : province 
+    }).then (() => {
+      console.log("Registered patient successfully");
+    }).catch((error) => {
+      console.log(error);
+    })
+
+  } else {
+    console.log("Please review the input");
+  }
 };
 
   return (
@@ -189,6 +229,10 @@ const handleSubmit = async (e) => {
           onChange={handleInputChange}
         />
         </ErrorBoundary>
+
+        <ErrorBoundary fallback="error occurred">
+        <input type="submit" value="Register" id="register"/>
+      </ErrorBoundary>
 
       </form>
       </div>

@@ -1,7 +1,7 @@
 class PatientRegex{
     constructor(){
         this.name_pattern = /^[A-Z]([a-z]{2,30})$/;
-        this.surname_pattern = /^[A-Z][a-z]{2,20}([\s | -][A-Z][a-z]{2,20}){0,2}[a-z]$/;
+        this.surname_pattern = /^[A-Z][a-z]{0,20}([\s | -][A-Z][a-z]{2,20}){0,2}[a-z]$/;
         this.id_pattern = /^[0-9]{13}$/;
         this.password_pattern = /^[A-Z | a-z | 0-9]{6,9}$/;
         this.birthdate_pattern_1900 = /^[1][8 | 9][0-9]{2}/
@@ -63,52 +63,52 @@ class PatientRegex{
     }
 
     validateName(name){
-        this.name_pattern.test(name);
+        return this.name_pattern.test(name);
     }
 
     validateSurname(surname){
-        this.surname_pattern.test(surname);
+       return this.surname_pattern.test(surname);
     }
 
     validateId(id){
-        this.id_pattern.test(id);
+       return this.id_pattern.test(id);
     }
 
     validateBirthdate1900(birthdate){
-        this.birthdate_pattern_1900.test(birthdate);
+       return this.birthdate_pattern_1900.test(birthdate);
     }
 
     validateBirthdate2000(birthdate){
-        this.birthdate_pattern_2000.test(birthdate);
+       return this.birthdate_pattern_2000.test(birthdate);
     }
 
     validatePassword(password){
-        this.password_pattern.test(password);
+       return this.password_pattern.test(password);
     }
 
     validateCellphone(cellphone){
-        this.cellphone_pattern.test(cellphone);
+       return this.cellphone_pattern.test(cellphone);
     }
 
     validateCellphoneCode(cellphone){
-        this.cellphone_pattern_code.test(cellphone);
+       return this.cellphone_pattern_code.test(cellphone);
     }
 
 
     validateEmail(email){
-        this.email_pattern.test(email);
+       return this.email_pattern.test(email);
     }
 
     validatePostalCode(postal){
-        this.postal_pattern.test(postal);
+       return this.postal_pattern.test(postal);
     }
 
     validateStreetName(street){
-        this.street_pattern.test(street);
+       return this.street_pattern.test(street);
     }
 
     validateGeneric(gen){
-        this.generic_pattern.test(gen);
+       return this.generic_pattern.test(gen);
     }
 }
 
