@@ -282,6 +282,26 @@ test("idupload input field renders successfully", ()=> {
     expect(idupload_input_field).toBeInTheDocument();
 });
 
+test("selfie upload label renders successfully", ()=> {
+    
+  render(
+  <Router>
+    <PatientRegister/> 
+  </Router>);
+  const selfie_upload_label = screen.getByLabelText('Upload Selfie:');
+  expect(selfie_upload_label).toBeInTheDocument();
+});
+
+test("selfie upload input field renders successfully", ()=> {
+
+  render(
+      <Router>
+        <PatientRegister/> 
+      </Router>);
+  const selfie_input_field = document.getElementById("selfieF");
+  expect(selfie_input_field).toBeInTheDocument();
+});
+
 
 
 

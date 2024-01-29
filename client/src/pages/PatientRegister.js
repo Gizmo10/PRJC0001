@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import ErrorBoundary from '../helper classes/ErrorBoundary';
 import './PatientRegister.css';
-import ValidateRegistration from '../helper classes/ValidateRegistration';
-import axios from 'axios';
+import AddPatientRegistrationDetails from '../services/AddPatientRegistrationDetails';
 
 const initialState = {
   name: "",
@@ -18,64 +17,32 @@ const initialState = {
   city:"",
   code:"",
   province:"",
-  idF:"",
+  idF:null,
+  selfieF:null,
 };
 
 const PatientRegister = () => {
   const [state, setState] = useState(initialState);
   const{name,surname,id,birthdate,cellphone,email,password,rePassword,
-    street,suburb,city,code,province,idF} = state;
-  const patient = new ValidateRegistration();
+    street,suburb,city,code,province,idF,selfieF} = state;
+
 
   const handleInputChange = (e) => {
     const { name, value} = e.target;
     setState({...state, [name]:value});
-};
+  };
 
 const handleSubmit = async (e) => {
   e.preventDefault();
- 
-  if(patient.validateAll(state)) {
-
-    await axios.post(`http://localhost:8080/patient/addPatientCredentials`,null,{
-    params : {
-      id : id,
-      password: password
-      }
-    }
-    ).then(() => {
-      console.log("Patient credentials stored successfully");
-
-    }).catch((error) => {
-      console.log(error);
-    })
-
-    await axios.post(`http://localhost:8080/patient/registerPatient`, {
-      name : name,
-      surname : surname,
-      id: id,
-      birthdate: birthdate,
-      cellphoneNumber : cellphone,
-      email : email,
-      streetName : street,
-      suburb : suburb,
-      city : city,
-      postalCode : code,
-      province : province 
-    }).then (() => {
-      console.log("Registered patient successfully");
-    }).catch((error) => {
-      console.log(error);
-    })
-
-  } else {
-    console.log("Please review the input");
-  }
-};
+  let file = new FormData(document.getElementById('registrationDetails'));
+  let addPatientRegistrationDetails = new AddPatientRegistrationDetails();
+  
+  addPatientRegistrationDetails.registerPatient(file,id,password); 
+ };    
 
   return (
     <div className="patientRegister">
-      <form onSubmit={handleSubmit} >
+      <form id="registrationDetails" encType="multipart/form-data" onSubmit={handleSubmit} >
         <ErrorBoundary fallback="error occured">
         <label htmlFor="name">Name: </label>
         <input
@@ -230,13 +197,24 @@ const handleSubmit = async (e) => {
         />
         </ErrorBoundary>
 
+        <ErrorBoundary fallback="error occured">
+        <label htmlFor="selfieF">Upload Selfie: </label>
+        <input
+          type="file"
+          id="selfieF"
+          name="selfieF"
+          value={selfieF|| ""}
+          onChange={handleInputChange}
+        />
+        </ErrorBoundary>
+
         <ErrorBoundary fallback="error occurred">
         <input type="submit" value="Register" id="register"/>
       </ErrorBoundary>
 
       </form>
       </div>
-  )
-}
+  );
+};
 
 export default PatientRegister

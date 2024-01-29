@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import './PatientLogin.css';
 import ErrorBoundary from '../helper classes/ErrorBoundary';
-import PatientRegex from '../helper classes/PatientRegexClass';
 
 const initialState = {
     id: "",
@@ -15,11 +14,6 @@ const PatientLogin = () => {
     const [state, setState] = useState(initialState);
     const {id, password} = state;
     const navigate = useNavigate();
-    const patient = new PatientRegex();
-
-    const validatePatientCredentials = ()=> {
-     return patient.validateId(id) && patient.validatePassword(password);
-    };
 
     const handleInputChange = (e) => {
         const { name, value} = e.target;
@@ -28,23 +22,22 @@ const PatientLogin = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-       
-        await axios.get(`http://localhost:8080/patient/loginUser`, {
+
+        await axios.get(`http://localhost:8080/patient/authenticate`, {
           params: {
               id : id,
               password: password      
                 }
              } 
           ).then((response) => {
-
-            if(response.data && validatePatientCredentials()) {
+            if(response.data) {
               navigate(`/PatientWelcomeScreen/${id}`);
             } else {
               window.alert("No user registered under that name");
             }
           }).catch((err) => {
             console.log(err.response.data);
-          });   
+          });
     };
 
   return (
