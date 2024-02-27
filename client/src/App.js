@@ -7,6 +7,7 @@ import PatientRegister from "./pages/PatientRegister";
 import ErrorBoundary from "./helper classes/ErrorBoundary";
 import PatientWelcomeScreen from "./pages/PatientWelcomeScreen";
 import Pages from "./pages/Pages";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
              <Route path="/PatientRegister" element= { <PatientRegister/> } />
              <Route path="/PatientWelcomeScreen" element={ <PatientWelcomeScreen/> } />
              <Route path="/Pages" element={ <Pages/> } />
+             <Route path="/ForgotPassword" element={ <ForgotPassword/> } />
             </Routes>
         </div>
     </ErrorBoundary>

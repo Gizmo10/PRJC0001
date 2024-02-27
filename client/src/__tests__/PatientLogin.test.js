@@ -4,6 +4,17 @@ import Pages from '../pages/Pages';
 import { BrowserRouter as Router } from 'react-router-dom';
 import userEvent from "@testing-library/user-event";
 import App from '../App';
+import ForgotPassword from '../pages/ForgotPassword';
+import React from 'react'; 
+
+test("renders the react App root element", ()=> {
+  
+    render(
+    <Router>
+        <App />
+    </Router>);
+    screen.debug();
+});
 
 test("id label renders successfully", ()=> {
     
@@ -65,15 +76,6 @@ test("register button renders successfully", ()=> {
     expect(register_button).toBeInTheDocument();
 });
 
-test("renders the react App root element", ()=> {
-  
-    render(
-    <Router>
-        <App />
-    </Router>);
-    screen.debug();
-});
-
 test("The register button navigates to the Registration page", async ()=> {
     userEvent.setup();
     render(
@@ -87,6 +89,32 @@ test("The register button navigates to the Registration page", async ()=> {
     const register_name_label = screen.getByLabelText('Name:');
     expect(register_name_label).toBeInTheDocument();
 }); 
+
+test("forgot password button renders successfully", ()=> {
+
+    render(
+        <Router>
+          <PatientLogin/> 
+        </Router>);
+    const forgot_password_button = screen.getByText('Forgot Password');
+    expect(forgot_password_button).toBeInTheDocument();
+});
+
+test("The forgot password button navigates to the Forgot Password page", async ()=> {
+    userEvent.setup();
+    render(
+        <Router>
+          <PatientLogin/>
+          <ForgotPassword/>
+        </Router>);
+    const forgot_password_button = screen.getByText('Forgot Password');
+    expect(forgot_password_button).toBeInTheDocument();
+
+    await userEvent.click(forgot_password_button);
+    const email_label = screen.getByLabelText('Email:');
+    expect(email_label).toBeInTheDocument();
+}); 
+
 
 
 

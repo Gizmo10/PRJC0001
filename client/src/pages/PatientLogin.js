@@ -74,6 +74,11 @@ const PatientLogin = () => {
       <ErrorBoundary fallback="error occured">
         <button id="register" onClick={() => navigate("/PatientRegister")}>Register</button>
       </ErrorBoundary>
+
+      <ErrorBoundary fallback="error occured">
+        <button id="forgotPassword" onClick={() => navigate("/ForgotPassword")}>Forgot Password</button>
+      </ErrorBoundary>
+
       </form>
     </div>
   );
