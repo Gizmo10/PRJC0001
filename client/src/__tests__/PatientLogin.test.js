@@ -1,6 +1,6 @@
 import {render, screen} from '@testing-library/react';
 import PatientLogin from '../pages/PatientLogin';
-import Pages from '../pages/Pages';
+import PatientRegister from '../pages/PatientRegister';
 import { BrowserRouter as Router } from 'react-router-dom';
 import userEvent from "@testing-library/user-event";
 import App from '../App';
@@ -80,7 +80,8 @@ test("The register button navigates to the Registration page", async ()=> {
     userEvent.setup();
     render(
         <Router>
-          < Pages/>
+          <PatientLogin/> 
+          <PatientRegister/>
         </Router>);
     const register_button = screen.getByText('Register');
     expect(register_button).toBeInTheDocument();
