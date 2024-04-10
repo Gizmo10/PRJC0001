@@ -115,7 +115,7 @@ const PatientWelcomeScreen = () => {
 
       <br/><br/>
 
-      <table className="medicalRecordsTable">
+      <table className="medicalRecordsTable" id="recordsTable">
          <thead>
           <tr>
             <th>Doctor's name</th>

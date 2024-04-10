@@ -48,7 +48,7 @@ const CreateMedicalRecord = () => {
     <div className="patientRegister">
     <form id="medicalRecordForm" encType="multipart/form-data" onSubmit={handleSubmit} >
         <ErrorBoundary fallback="error occured">
-        <label htmlFor="name">Doctors's name: </label>
+        <label htmlFor="name">Doctors name: </label>
         <input
           type="text"
           id="name"
@@ -59,7 +59,7 @@ const CreateMedicalRecord = () => {
         </ErrorBoundary>
 
         <ErrorBoundary fallback="error occured">
-        <label htmlFor="facility">Facility's name: </label>
+        <label htmlFor="facility">Facility name: </label>
         <input
           type="text"
           id="facility"

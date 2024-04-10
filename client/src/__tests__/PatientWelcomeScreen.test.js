@@ -58,3 +58,13 @@ test("profile button renders successfully", ()=> {
     expect(profile_button).toBeInTheDocument();
 });
 
+test("records table renders successfully", ()=> {
+
+    render(
+        <Router>
+          <PatientWelcomeScreen/> 
+        </Router>);
+    const records_table = document.getElementById("recordsTable");
+});
+
+

@@ -302,6 +302,16 @@ test("selfie upload input field renders successfully", ()=> {
   expect(selfie_input_field).toBeInTheDocument();
 });
 
+test("register submit button renders successfully", ()=> {
+
+  render(
+      <Router>
+        <PatientRegister/> 
+      </Router>);
+  const register_submit_button = screen.getByText('Submit');
+  expect(register_submit_button).toBeInTheDocument();
+});
+
 
 
 
