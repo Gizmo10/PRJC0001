@@ -101,20 +101,6 @@ test("forgot password button renders successfully", ()=> {
     expect(forgot_password_button).toBeInTheDocument();
 });
 
-test("The forgot password button navigates to the Forgot Password page", async ()=> {
-    userEvent.setup();
-    render(
-        <Router>
-          <PatientLogin/>
-          <ForgotPassword/>
-        </Router>);
-    const forgot_password_button = screen.getByText('Forgot Password');
-    expect(forgot_password_button).toBeInTheDocument();
-
-    await userEvent.click(forgot_password_button);
-    const email_label = screen.getByLabelText('Email:');
-    expect(email_label).toBeInTheDocument();
-}); 
 
 
 

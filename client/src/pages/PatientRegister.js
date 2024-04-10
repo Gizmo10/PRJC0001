@@ -209,7 +209,7 @@ const handleSubmit = async (e) => {
         </ErrorBoundary>
 
         <ErrorBoundary fallback="error occurred">
-        <input type="submit" value="Register" id="register"/>
+        <input type="submit" value="Submit" id="register"/>
       </ErrorBoundary>
 
       </form>
