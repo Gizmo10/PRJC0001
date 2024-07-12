@@ -4,7 +4,6 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import userEvent from "@testing-library/user-event";
 import App from '../App';
 import React from 'react'; 
-import CreateMedicalRecord from '../pages/CreateMedicalRecord';
 
 test("renders the react App root element", ()=> {
   
@@ -65,6 +64,7 @@ test("records table renders successfully", ()=> {
           <PatientWelcomeScreen/> 
         </Router>);
     const records_table = document.getElementById("recordsTable");
+    expect(records_table).toBeInTheDocument();
 });
 
 

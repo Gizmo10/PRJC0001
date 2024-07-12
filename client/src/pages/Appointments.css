@@ -1,0 +1,104 @@
+.appointmentsPage {
+    margin: auto;
+    padding: 15px;
+    max-width: 100%;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+th {
+    text-align: "center";
+  }
+
+.appointmentsTable {
+    border: 1px solid black;
+    border-radius: 3px;
+    border-collapse: collapse;
+    margin: auto;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    max-width: 100%;
+    box-shadow: 4px 4px grey;
+  }
+  
+  .appointmentsTable tr th {
+    background-color: white;
+    padding: 12px 15px;
+    border: 1px solid black;
+    color: black;
+    text-align: left;
+  }
+  
+  .appointmentsTable td {
+    padding: 12px 15px;
+  }
+  
+  .appointmentsTable tbody tr {
+    border-bottom: 1px solid #dddddd;
+  }
+  
+  .appointmentsTable tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+  }
+  
+  .appointmentsTable tbody tr:last-of-type {
+    border-bottom: 2px solid #009878;
+  }
+
+  .header {
+    border: 1px solid black;
+    border-radius: 3px;
+    border-collapse: collapse;
+    margin: auto;
+    width: 100%;
+    height: 5%;
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  #filterVal {
+    width: 15%;
+  }
+
+  #searchSubmit {
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    width: 15%;
+    height: 40%;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+
+ #newAppointment {
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    width: 15%;
+    height: 40%;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+ }
+
+input[type="textarea"],
+select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}

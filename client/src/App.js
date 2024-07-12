@@ -8,6 +8,9 @@ import ErrorBoundary from "./helper classes/ErrorBoundary";
 import PatientWelcomeScreen from "./pages/PatientWelcomeScreen";
 import ForgotPassword from "./pages/ForgotPassword";
 import CreateMedicalRecord from "./pages/CreateMedicalRecord"
+import PatientProfile from "./pages/PatientProfile";
+import Appointments from "./pages/Appointments";
+import CreateAppointment from "./pages/CreateAppointment";
 
 function App() {
   return (
@@ -20,6 +23,9 @@ function App() {
              <Route path="/PatientWelcomeScreen/:id" element={ <PatientWelcomeScreen/> } />
              <Route path="/ForgotPassword" element={ <ForgotPassword/> } />
              <Route path="/CreateMedicalRecord" element={ <CreateMedicalRecord/> } />
+             <Route path="/PatientProfile/:id" element={ <PatientProfile/> } />
+             <Route path="/Appointments/:id" element={ <Appointments/> } />
+             <Route path="/CreateAppointment/:id" element={ <CreateAppointment/> } />
             </Routes>
         </div>
     </ErrorBoundary>

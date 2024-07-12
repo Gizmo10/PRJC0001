@@ -1,0 +1,35 @@
+.profileBar {
+    margin-top: 5%;
+    border: 1px solid black;
+    border-radius: 3px;
+    border-collapse: collapse;
+    margin: auto;
+    max-width: 50%;
+    box-shadow: 4px 4px grey;
+    padding: 15px;
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: left;
+    align-items: left;
+    align-content: left;
+}
+
+h1 {
+    max-width: 100%;
+    background-color: #4caf50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: 1px solid black;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+li {
+    text-align: left;
+}
+
+#appointments {
+    max-width: 100%;
+}

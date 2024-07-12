@@ -2,22 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import ErrorBoundary from '../helper classes/ErrorBoundary';
-import './PatientWelcomeScreen.css';
+import './Appointments.css';
 
 const initialState = {
-  doctor : "",
-  facility : "",
+  doctorName : "",
+  facilityName : "",
   dateFrom : "",
-  dateTo : "",
+  dateTo: ""
 }
 
 
-const PatientWelcomeScreen = () => {
+const Appointments = () => {
 
     const navigate = useNavigate();
     const { id } = useParams();
     const [state, setState] = useState(initialState);
-    const {doctor, facility, dateFrom, dateTo} = state;
+    const {doctorName, facilityName, dateFrom, dateTo} = state;
     const [data, setData] = useState([]);
 
     const handleInputChange = (e) => {
@@ -26,7 +26,7 @@ const PatientWelcomeScreen = () => {
     };
 
     const loadData = async () => {
-      await axios.get(`http://localhost:8080/record/getByIdNumber`,{
+      await axios.get(`http://localhost:8080/appointments/byIdNumber`,{
         params : {idNumber: id}
       }).then((response) => {
         setData(response.data);
@@ -35,12 +35,12 @@ const PatientWelcomeScreen = () => {
       })  
     }
 
-    const loadDataByFacility = async () => {
-      await axios.get(`http://localhost:8080/record/getByFilteredSearch`,{
+    const loadDataByFilteredSearch = async () => {
+      await axios.get(`http://localhost:8080/appointments/byFilteredSearch`,{
         params : {
           idNumber: id,
-          facility: facility,
-          doctor: doctor,
+          doctor: doctorName,
+          facility: facilityName,
           dateFrom: dateFrom,
           dateTo: dateTo
         }
@@ -56,17 +56,16 @@ const PatientWelcomeScreen = () => {
     }, []);
 
   return (
-    <body className= "welcomeScreen">
-      <div className="footer">
-        <button id = "profile" onClick={()=> navigate(`/PatientProfile/${id}`)}> P </button>
+    <body className= "appointmentsPage">
+      <div className="header">
         
         <ErrorBoundary fallback="error occured">
         <input
           type="text"
           id="filterVal"
-          name="doctor"
+          name="doctorName"
           placeholder="doctor's name"
-          value={doctor || ""}
+          value={doctorName || ""}
           onChange={handleInputChange}
         />
         </ErrorBoundary>
@@ -75,9 +74,9 @@ const PatientWelcomeScreen = () => {
         <input
           type="text"
           id="filterVal"
-          name="facility"
+          name="facilityName"
           placeholder="facility name"
-          value={facility || ""}
+          value={facilityName || ""}
           onChange={handleInputChange}
         />
         </ErrorBoundary>
@@ -87,7 +86,6 @@ const PatientWelcomeScreen = () => {
           type="date"
           id="filterVal"
           name="dateFrom"
-          placeholder="start date"
           value={dateFrom || ""}
           onChange={handleInputChange}
         />
@@ -98,32 +96,29 @@ const PatientWelcomeScreen = () => {
           type="date"
           id="filterVal"
           name="dateTo"
-          placeholder="end date"
           value={dateTo || ""}
           onChange={handleInputChange}
         />
         </ErrorBoundary>
 
         <ErrorBoundary fallback="error occured">
-          <button id="searchSubmit" onClick={loadDataByFacility} >search</button>
+          <button id="searchSubmit" onClick={loadDataByFilteredSearch} >search</button>
         </ErrorBoundary>
 
         <ErrorBoundary fallback="error occured">
-          <button id= "newRecord" onClick={() => navigate("/CreateMedicalRecord")}>add record</button>
+          <button id= "newAppointment" onClick={() => navigate(`/CreateAppointment/${id}`)}>add appointment</button>
         </ErrorBoundary>
       </div>
 
       <br/><br/>
 
-      <table className="medicalRecordsTable" id="recordsTable">
+      <table className="appointmentsTable" id="appointmentsTable">
          <thead>
           <tr>
             <th>Doctor's name</th>
             <th>Medical facility name</th>
-            <th>Diagnosis</th>
-            <th>Prescription</th>
-            <th>Date</th>
             <th>Contact number</th>
+            <th>date</th>
           </tr>
          </thead>
 
@@ -131,12 +126,10 @@ const PatientWelcomeScreen = () => {
           {data.map((item) => {
             return(
             <tr key={item.id}>
-              <td>{item.name}</td>
-              <td>{item.facility}</td>
-              <td>{item.diagnosis}</td>
-              <td>{item.prescription}</td>
-              <td>{item.date}</td>
+              <td>{item.doctorName}</td>
+              <td>{item.facilityName}</td>
               <td>{item.contactNumber}</td>
+              <td>{item.date}</td>
             </tr>
             )
           })}
@@ -146,4 +139,4 @@ const PatientWelcomeScreen = () => {
   );
 };
 
-export default PatientWelcomeScreen;
+export default Appointments;
